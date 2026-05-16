@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>THE STRONGEST BATTLEGROUNDS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#05010f;
+    font-family:'Orbitron',sans-serif;
+    position:relative;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background{
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left,#7a00ff 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#001eff 0%,transparent 30%),
+    radial-gradient(circle at center,#ff00ff22 0%,transparent 40%),
+    linear-gradient(135deg,#04000d,#0d0220,#180035);
+
+    animation:bgAnim 8s infinite alternate ease-in-out;
+}
+
+@keyframes bgAnim{
+
+    from{
+        transform:scale(1);
+        filter:hue-rotate(0deg);
+    }
+
+    to{
+        transform:scale(1.05);
+        filter:hue-rotate(20deg);
+    }
+}
+
+/* =========================
+   GLOW
+========================= */
+
+.glow{
+    position:absolute;
+    width:900px;
+    height:900px;
+
+    background:
+    radial-gradient(circle,
+    #8f00ff55 0%,
+    transparent 70%);
+
+    animation:rotate 18s linear infinite;
+}
+
+@keyframes rotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particles{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+}
+
+.particle{
+    position:absolute;
+    border-radius:50%;
+    background:white;
+    animation:float linear infinite;
+}
+
+@keyframes float{
+
+    from{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-20vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    position:relative;
+    z-index:10;
+    width:95%;
+    max-width:1700px;
+    text-align:center;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    font-family:'Anton',sans-serif;
+
+    font-size:clamp(4rem,10vw,10rem);
+
+    line-height:.9;
+
+    text-transform:uppercase;
+
+    letter-spacing:4px;
+
+    color:white;
+
+    text-shadow:
+    0 0 10px #fff,
+    0 0 25px #9d4dff,
+    0 0 60px #651fff;
+
+    animation:titlePulse 2s infinite alternate;
+}
+
+.title span{
+
+    display:block;
+
+    color:#ffc928;
+
+    text-shadow:
+    0 0 10px #ffc928,
+    0 0 30px #ff9800,
+    0 0 60px #ff6d00;
+}
+
+@keyframes titlePulse{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.03);
+    }
+}
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.subtitle{
+
+    margin-top:18px;
+
+    color:#cbb4ff;
+
+    letter-spacing:8px;
+
+    font-size:1rem;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown{
+
+    margin-top:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:25px;
+
+    position:relative;
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(15px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 0 25px rgba(166,0,255,.35),
+    inset 0 0 30px rgba(255,255,255,.05);
+
+    transition:.4s;
+}
+
+.card::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:-3px;
+
+    background:linear-gradient(
+    45deg,
+    #ff00ff,
+    #6a00ff,
+    #00bfff,
+    #ffd500
+    );
+
+    z-index:-1;
+
+    filter:blur(20px);
+
+    opacity:.7;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+    box-shadow:
+    0 0 60px rgba(195,0,255,.6),
+    inset 0 0 40px rgba(255,255,255,.08);
+}
+
+/* =========================
+   NUMBERS
+========================= */
+
+.number{
+
+    font-size:5.5rem;
+
+    font-weight:900;
+
+    color:#ffd54f;
+
+    text-shadow:
+    0 0 10px #ffd54f,
+    0 0 30px #ff9800,
+    0 0 50px #ff6d00;
+}
+
+/* =========================
+   LABEL
+========================= */
+
+.label{
+
+    margin-top:10px;
+
+    color:white;
+
+    font-size:1rem;
+
+    letter-spacing:6px;
+
+    opacity:.9;
+}
+
+/* =========================
+   COLONS
+========================= */
+
+.separator{
+
+    font-size:5rem;
+
+    color:#d28cff;
+
+    text-shadow:
+    0 0 10px #d28cff,
+    0 0 30px #9d4dff;
+}
+
+/* =========================
+   EVENT INFO
+========================= */
+
+.event-info{
+
+    margin-top:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+}
+
+.info-box{
+
+    min-width:240px;
+
+    padding:20px 28px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+    0 0 20px rgba(160,0,255,.25),
+    inset 0 0 15px rgba(255,255,255,.03);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.info-label{
+
+    color:#b388ff;
+
+    font-size:.8rem;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+}
+
+.info-value{
+
+    color:white;
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,.3);
+}
+
+/* =========================
+   FINISHED
+========================= */
+
+.finished{
+
+    display:none;
+
+    margin-top:40px;
+
+    color:#00ffb7;
+
+    font-size:3rem;
+
+    text-shadow:
+    0 0 15px #00ffb7,
+    0 0 40px #00ffb7;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1200px){
+
+    .card{
+        width:180px;
+        height:180px;
+    }
+
+    .number{
+        font-size:4rem;
+    }
+
+    .separator{
+        font-size:4rem;
+    }
+}
+
+@media(max-width:768px){
+
+    body{
+        overflow:auto;
+        padding:40px 0;
+    }
+
+    .title{
+        font-size:3.5rem;
+    }
+
+    .subtitle{
+        font-size:.8rem;
+        letter-spacing:4px;
+    }
+
+    .countdown{
+        gap:12px;
+    }
+
+    .card{
+        width:130px;
+        height:130px;
+    }
+
+    .number{
+        font-size:3rem;
+    }
+
+    .label{
+        font-size:.7rem;
+        letter-spacing:3px;
+    }
+
+    .separator{
+        display:none;
+    }
+
+    .info-box{
+        width:100%;
+    }
+
+    .info-value{
+        font-size:1rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="glow"></div>
+
+<div class="particles" id="particles"></div>
+
+<div class="container">
+
+    <!-- TITLE -->
+
+    <h1 class="title">
+        THE STRONGEST
+        <span>BATTLEGROUNDS</span>
+    </h1>
+
+    <div class="subtitle">
+        ULTIMATE EVENT COUNTDOWN
+    </div>
+
+    <!-- COUNTDOWN -->
+
+    <div class="countdown">
+
+        <div class="card">
+            <div class="number" id="days">00</div>
+            <div class="label">DAYS</div>
+        </div>
+
+        <div class="separator">:</div>
+
+        <div class="card">
+            <div class="number" id="hours">00</div>
+            <div class="label">HOURS</div>
+        </div>
+
+        <div class="separator">:</div>
+
+        <div class="card">
+            <div class="number" id="minutes">00</div>
+            <div class="label">MINUTES</div>
+        </div>
+
+        <div class="separator">:</div>
+
+        <div class="card">
+            <div class="number" id="seconds">00</div>
+            <div class="label">SECONDS</div>
+        </div>
+
+    </div>
+
+    <!-- EVENT INFO -->
+
+    <div class="event-info">
+
+        <div class="info-box">
+            <div class="info-label">DATE</div>
+            <div class="info-value">17 MAY 2026</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">TIME</div>
+            <div class="info-value">03:25 AM</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">TIMEZONE</div>
+            <div class="info-value">UTC +5:30</div>
+        </div>
+
+    </div>
+
+    <!-- FINISHED -->
+
+    <div class="finished" id="finished">
+        EVENT STARTED
+    </div>
+
+</div>
+
+<script>
+
+/* =========================
+   TARGET DATE
+========================= */
+
+const targetDate =
+new Date("May 17, 2026 03:25:00 GMT+0530").getTime();
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const daysEl =
+document.getElementById("days");
+
+const hoursEl =
+document.getElementById("hours");
+
+const minutesEl =
+document.getElementById("minutes");
+
+const secondsEl =
+document.getElementById("seconds");
+
+const finishedEl =
+document.getElementById("finished");
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+function updateCountdown(){
+
+    const now =
+    new Date().getTime();
+
+    let distance =
+    targetDate - now;
+
+    /* STOP AT 0 */
+
+    if(distance <= 0){
+
+        clearInterval(timer);
+
+        daysEl.innerHTML = "00";
+        hoursEl.innerHTML = "00";
+        minutesEl.innerHTML = "00";
+        secondsEl.innerHTML = "00";
+
+        finishedEl.style.display = "block";
+
+        return;
+    }
+
+    const days =
+    Math.floor(
+    distance /
+    (1000 * 60 * 60 * 24)
+    );
+
+    const hours =
+    Math.floor(
+    (distance %
+    (1000 * 60 * 60 * 24))
+    /
+    (1000 * 60 * 60)
+    );
+
+    const minutes =
+    Math.floor(
+    (distance %
+    (1000 * 60 * 60))
+    /
+    (1000 * 60)
+    );
+
+    const seconds =
+    Math.floor(
+    (distance %
+    (1000 * 60))
+    /
+    1000
+    );
+
+    daysEl.innerHTML =
+    String(days).padStart(2,"0");
+
+    hoursEl.innerHTML =
+    String(hours).padStart(2,"0");
+
+    minutesEl.innerHTML =
+    String(minutes).padStart(2,"0");
+
+    secondsEl.innerHTML =
+    String(seconds).padStart(2,"0");
+}
+
+/* START */
+
+updateCountdown();
+
+const timer =
+setInterval(updateCountdown,1000);
+
+/* =========================
+   PARTICLES
+========================= */
+
+const particles =
+document.getElementById("particles");
+
+for(let i=0;i<180;i++){
+
+    const particle =
+    document.createElement("div");
+
+    particle.classList.add("particle");
+
+    const size =
+    Math.random() * 4 + 2;
+
+    particle.style.width =
+    size + "px";
+
+    particle.style.height =
+    size + "px";
+
+    particle.style.left =
+    Math.random() * 100 + "vw";
+
+    particle.style.animationDuration =
+    (Math.random() * 10 + 5) + "s";
+
+    particle.style.animationDelay =
+    Math.random() * 5 + "s";
+
+    particle.style.opacity =
+    Math.random();
+
+    particles.appendChild(particle);
+}
+
+</script>
+
+</body>
+</html>
